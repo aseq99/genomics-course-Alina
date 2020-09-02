@@ -39,4 +39,6 @@ nuc<-"A,T,C,G"
 sort(nuc)
 ```
 
+Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
+
 ## REFERENCES
