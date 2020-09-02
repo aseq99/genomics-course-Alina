@@ -3,6 +3,7 @@ title: "Lab 2_Alina"
 author: Alina Sequeira
 date: 9-2-20
 output: html_document
+bibliography: data/references.bib
 ---
 
 ```{r setup, include=FALSE}
