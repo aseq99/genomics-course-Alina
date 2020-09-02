@@ -1,0 +1,21 @@
+---
+title: "Evolutionary Genomics & Bioinformatics"
+author: Alina Sequeira
+date: 9-2-20
+output: html_document
+bibliography: data/references.bib
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## LAB FILES
+Lab 1 : [Intro to R](Alina-Lab1.html)
+
+Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
+
+## REFERENCES
+
