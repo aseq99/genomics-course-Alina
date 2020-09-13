@@ -13,10 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## LAB FILES
-* Lab 1 : [Intro to R](Alina-Lab1.html)
+* Lab 1: [Intro to R](Alina-Lab1.html)
 * Lab 2: [Github](Lab-2_Alina.html)
 
-Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].
+*Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].*
 
 ## REFERENCES
 
