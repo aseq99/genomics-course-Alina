@@ -1,0 +1,193 @@
+---
+title: "Lab_4B"
+output: html_document
+author: Alina Sequeira
+date: September 19, 2020
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+report_03_11_2020 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/03-11-2020.csv")) %>%
+  rename(Country_Region = "Country/Region", Province_State = "Province/State")
+```
+```{r}
+str(report_03_11_2020)
+```
+```{r}
+view(report_03_11_2020)
+```
+
+## Exercise 1
+```{r}
+report_09_13_2020 <-   read_csv(url("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-13-2020.csv"))
+```
+```{r}
+str(report_09_13_2020)
+```
+```{r}
+view(report_09_13_2020)
+```
+
+## Counts of Confirmed Cases and Deaths by Country (03-11-20)
+```{r}
+report_03_11_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed), Total_Deaths = sum(Deaths)) 
+```
+
+## Counts of Confirmed Cases & Deaths by Country (09-13-20)
+```{r}
+report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed), Total_Deaths = sum(Deaths)) 
+```
+
+## Counts of Confirmed Cases by State (03-11-20)
+```{r}
+report_03_11_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed))
+```
+
+## Counts of Confirmed Cases by State (09-13-20)
+```{r}
+report_09_13_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed))
+```
+
+## Top 10 Countries for Death (03-11-20)
+```{r}
+report_03_11_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+
+## Top 10 Countries for Death (09-13-20)
+```{r}
+report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+
+## Exercise 2
+```{r}
+report_0311_Deaths <- report_03_11_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = report_0311_Deaths, mapping = aes(x = Country_Region, y = Total_Deaths)) + 
+  geom_point(color = "tomato")
+```
+
+## Plot - Top 10 Countries with Total Confirmed Cases (03-11-20)
+```{r}
+report_0311_Confirmed <- report_03_11_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed_Cases)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = report_0311_Confirmed, mapping = aes(x = Country_Region, y = Confirmed_Cases)) + 
+  geom_point(color = "tomato")
+```
+
+## Plot - Top 10 Countries with Total Deaths (09-13-20)
+```{r}
+report_0913_Deaths <- report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = report_0913_Deaths, mapping = aes(x = Country_Region, y = Total_Deaths)) + 
+  geom_point(color = "steelblue") 
+```
+
+## Plot - Top 10 Countries with Total Confirmed Cases (09-13-20)
+```{r}
+report_0913_Confirmed <- report_09_13_2020 %>% 
+  group_by(Country_Region) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed_Cases)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = report_0913_Confirmed, mapping = aes(x = Country_Region, y = Confirmed_Cases)) + 
+  geom_point(color = "steelblue")
+```
+
+## Bar Graph - Top 10 States with Confirmed Cases (03-11-20)
+```{r}
+reportcon_US311 <- report_03_11_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed_Cases)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = reportcon_US311, mapping = aes(x = Confirmed_Cases, y = Province_State )) + 
+  geom_bar(stat = "identity", fill = "tomato")
+```
+
+## Bar Graph - Top 10 States with Deaths (03-11-20)
+```{r}
+reportdeath_US311 <- report_03_11_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = reportdeath_US311, mapping = aes(x = Total_Deaths, y = Province_State )) + 
+  geom_bar(stat = "identity", fill = "tomato")
+```
+
+## Bar Graph - Top 10 States with Confirmed Cases (09-13-20)
+```{r}
+reportcon_US913 <- report_09_13_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Confirmed_Cases = sum(Confirmed)) %>% 
+  arrange(desc(Confirmed_Cases)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = reportcon_US913, mapping = aes(x = Confirmed_Cases, y = Province_State )) + 
+  geom_bar(stat = "identity", fill = "steelblue")
+```
+
+## Bar Graph - Top 10 States with Deaths (09-13-20)
+```{r}
+reportdeath_US913 <- report_09_13_2020 %>% 
+  filter(Country_Region == "US") %>%
+  group_by(Province_State) %>% 
+  summarize(Total_Deaths = sum(Deaths)) %>% 
+  arrange(desc(Total_Deaths)) %>% 
+  slice(1:10)
+```
+```{r}
+ggplot(data = reportdeath_US913, mapping = aes(x = Total_Deaths, y = Province_State )) + 
+  geom_bar(stat = "identity", fill = "steelblue")
+```
+
