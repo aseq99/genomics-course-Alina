@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * Lab 3B: [Manipulating Data](Lab_3B.html)
 * Lab 4A: [ggplot 2 Examples/Challenges](Lab_4A.html)
 * Lab 4B: [Data Wrangling and Graphing COVID-19 Reporting Data](Lab_4B.html)
+* Lab 5A: [Data Wrangling and Graphing COVID-19 Reporting Data Part 2](Lab_5A.html)
 
 *Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].*
 
