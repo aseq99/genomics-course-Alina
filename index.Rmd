@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * Lab 4B: [Data Wrangling and Graphing COVID-19 Reporting Data](Lab_4B.html)
 * Lab 5A: [Data Wrangling and Graphing COVID-19 Reporting Data Part 2](Lab_5A.html)
 * Lab 6: [Data Maps and Interactive Graphs from COVID-19 Reporting Data](Lab_6.html)
+* Lab 9: [Programming in R: Regular Expressions](Lab_9.html)
 
 *Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].*
 
