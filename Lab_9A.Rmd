@@ -1,0 +1,142 @@
+---
+title: "Lab_9x"
+output: html_document
+author: Alina Sequeira
+date: November 1, 2020
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Conditional Statesments with if-else
+```{r}
+library(stringr)
+library(tidyverse)
+```
+
+
+## Valid if/else structure
+```{r}
+## Generate a uniform random number
+x <- runif(1, 0, 10)  
+if(x > 3) {
+        y <- 10
+} else {
+        y <- 0
+}
+```
+
+## for Loops
+```{r}
+for(i in 1:10) {
+        print(i)
+}
+```
+```{r}
+x <- c("a", "b", "c", "d")
+for(i in 1:4) {
+        ## Print out each element of 'x'
+        print(x[i])  
+}
+```
+```{r}
+## Generate a sequence based on length of 'x'
+for(i in seq_along(x)) {   
+        print(x[i])
+}
+```
+```{r}
+for(letter in x) {
+        print(letter)
+}
+```
+```{r}
+for(i in 1:4) print(x[i])
+```
+
+## Nested for Loops
+```{r}
+x <- matrix(1:6, 2, 3)
+for(i in seq_len(nrow(x))) {
+        for(j in seq_len(ncol(x))) {
+                print(x[i, j])
+        }   
+}
+```
+
+## While Loops
+```{r}
+count <- 0
+while(count < 10) {
+        print(count)
+        count <- count + 1
+}
+```
+```{r}
+z <- 5
+set.seed(1)
+while(z >= 3 && z <= 10) {
+        coin <- rbinom(1, 1, 0.5)
+        
+        if(coin == 1) {  ## random walk
+                z <- z + 1
+        } else {
+                z <- z - 1
+        } 
+}
+print(z)
+```
+
+## Functions in R
+```{r}
+f <- function() {
+        ## This is an empty function
+}
+## Functions have their own class
+class(f)  
+```
+```{r}
+## Execute this function
+f() 
+```
+
+## Function
+```{r}
+f <- function() {
+        cat("Hello, world!\n")
+}
+f()
+```
+```{r}
+f <- function(num) {
+        hello <- "Hello, world!\n"
+        for(i in seq_len(num)) {
+                cat(hello)
+        }
+        chars <- nchar(hello) * num
+        chars
+}
+meaningoflife <- f(3)
+```
+```{r}
+print(meaningoflife)
+```
+```{r}
+f <- function(num = 1) {
+        hello <- "Hello, world!\n"
+        for(i in seq_len(num)) {
+                cat(hello)
+        }
+        chars <- nchar(hello) * num
+        chars
+}
+f()    ## Use default value for 'num'
+```
+```{r}
+f(2)   ## Use user-specified value
+```
+```{r}
+f(num = 2)
+```
+
