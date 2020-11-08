@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * Lab 6: [Data Maps and Interactive Graphs from COVID-19 Reporting Data](Lab_6.html)
 * Lab 9: [Programming in R: Regular Expressions](Lab_9.html)
 * Lab 9A: [Programming in R: Control Structures & Functions](Lab_9A.html)
-* Lab 10: [Population Genomics Based on High Throughout Sequencing](Lab10)
+* Lab 10: [Population Genomics Based on High Throughout Sequencing](lab-10.html)
 
 *Application written in R [@RCoreTeam] using the Shiny framework [@Chang2015].*
 
